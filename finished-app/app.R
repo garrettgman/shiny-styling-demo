@@ -1,38 +1,58 @@
+# Load packages
 library(shiny)
 library(tidyverse)
 library(bslib)
+library(thematic)
+library(gitlink)
 
+# Set the default theme for ggplot2 plots
+ggplot2::theme_set(ggplot2::theme_minimal())
+
+# Apply the CSS used by the Shiny app to the ggplot2 plots
+thematic_shiny()
+
+# Load data, objects, and helper functions
 source("setup.R")
 source("helpers.R")
 
 # Build the app UI
 ui <- page_sidebar(
+
+  # Add github link
+  ribbon_css("https://github.com/garrettgman/shiny-styling-demo"),
+
+  # Set the CSS theme
   theme = bs_theme(bootswatch = "darkly",
-                   bg = "#222222",
-                   fg = "#86C7ED"),
-  title = "Effectiveness of DemoCo App Free Trial by Customer Segment",
+                   "table-color" = "#86C7ED",
+                   success = "#86C7ED"),
+
+  # Add title
+  title = "Effectiveness of DemoCo App Free Trial by Customer Profile",
+
+  # Add sidebar elements
   sidebar = sidebar(
-    title = "Select a segment of data to view",
-    class = "fg-primary",
+    class = "bg-secondary",
     sidebar_content,
     tags$img(src = "logo.png", width = "100%", height = "auto")
   ),
+
+  # Layout non-sidebar elements
   layout_columns(
-    card(card_header("Conversions over time"),
-              plotOutput("line")),
-    card(card_header("Conversion rates"),
-              plotOutput("bar")),
+    card(card_header("Conversions over time", class = "text-success"),
+         plotOutput("line")),
+    card(card_header("Conversion rates", class = "text-success"),
+         plotOutput("bar")),
     value_box("Recommended Trial",
               textOutput("recommended_eval"),
-              theme_color = "secondary"),
+              theme = "secondary"),
     value_box("Customers",
               textOutput("number_of_customers"),
-              theme_color = "secondary"),
+              theme = "secondary"),
     value_box("Avg Spend",
               textOutput("average_spend"),
-              theme_color = "secondary"),
-    card(card_header("Conversion rates by subgroup"),
-              tableOutput("table")),
+              theme = "secondary"),
+    card(card_header("Conversion rates by subgroup", class = "text-success"),
+         tableOutput("table")),
     col_widths = c(8,4,4,4,4,12),
     row_heights = c(4, 1.5, 3)
   )

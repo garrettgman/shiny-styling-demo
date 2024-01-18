@@ -6,10 +6,9 @@ source("helpers.R")
 
 # Build the app UI
 ui <- fluidPage(
-  titlePanel("Effectiveness of DemoCo App Free Trial by Customer Segment"),
+  titlePanel("Effectiveness of DemoCo App Free Trial by Customer Profile"),
   sidebarLayout(
     sidebarPanel(
-      title = "Select a segment of data to view",
       sidebar_content
     ),
     mainPanel(
