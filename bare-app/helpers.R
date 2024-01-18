@@ -21,21 +21,21 @@ compute_average_spend <- function(data){
   str_glue("${x}")
 }
 
-count_customers <- function(data) {
+count_users <- function(data) {
   sum(data$outcome == "Won") |>
     format(big.mark = ",")
 }
 
-filter_customers <- function(industries, propensities, contracts) {
+filter_users <- function(industries, propensities, contracts) {
 
-  customers |>
+  users |>
     filter(industry %in% industries,
            propensity %in% propensities,
            contract %in% contracts)
 }
 
-filter_customers_by_group <- function(industries, propensities, contracts) {
-  customers_by_group |>
+filter_users_by_group <- function(industries, propensities, contracts) {
+  users_by_group |>
     filter(industry %in% industries,
            propensity %in% propensities,
            contract %in% contracts)

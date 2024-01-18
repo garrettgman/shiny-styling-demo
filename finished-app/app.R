@@ -27,7 +27,7 @@ ui <- page_sidebar(
                    success = "#86C7ED"),
 
   # Add title
-  title = "Effectiveness of DemoCo App Free Trial by Customer Profile",
+  title = "Effectiveness of DemoCo App Free Trial by User Profile",
 
   # Add sidebar elements
   sidebar = sidebar(
@@ -45,8 +45,8 @@ ui <- page_sidebar(
     value_box("Recommended Trial",
               textOutput("recommended_eval"),
               theme = "secondary"),
-    value_box("Customers",
-              textOutput("number_of_customers"),
+    value_box("Users",
+              textOutput("number_of_users"),
               theme = "secondary"),
     value_box("Avg Spend",
               textOutput("average_spend"),
@@ -73,14 +73,14 @@ server <- function(input, output) {
 
   selected_data <-
     reactive({
-      filter_customers(selected_industries(),
+      filter_users(selected_industries(),
                        selected_propensities(),
                        selected_contracts())
     })
 
   selected_data_by_group <-
     reactive({
-      filter_customers_by_group(selected_industries(),
+      filter_users_by_group(selected_industries(),
                                 selected_propensities(),
                                 selected_contracts())
     })
@@ -104,9 +104,9 @@ server <- function(input, output) {
       choose_recommendation(selected_data())
     })
 
-  output$number_of_customers <-
+  output$number_of_users <-
     renderText({
-      count_customers(selected_data())
+      count_users(selected_data())
     })
 
   output$average_spend <-

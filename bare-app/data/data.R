@@ -116,7 +116,7 @@ make_dates <- function(industry){
   sample(dates)
 }
 
-customers <-
+users <-
   expansion_rates |>
   pmap(make_obs) |>
   list_rbind() |>
@@ -124,7 +124,7 @@ customers <-
   mutate(date = make_dates(industry))|>
   ungroup()
 
-n <- nrow(customers)
+n <- nrow(users)
 
 contract_amount <- c("Monthly" = 1, "Annual" = 0.9)
 industry_amount <- c("Academia" = 40,
@@ -138,13 +138,13 @@ industry_amount <- c("Academia" = 40,
                      "Pharmaceuticals" = 65,
                      "Technology" = 60)
 
-customers |>
+users |>
   group_by(date) |>
   sample_frac(1) |>
   ungroup() |>
   mutate(account = 1:n, .before = outcome) |>
   mutate(amount = (industry_amount[industry] + rnorm(n, 0, 5)) * contract_amount[contract],
          days = pmax(1, amount - runif(n, 15, 20) + rnorm(n, 0, 10))) |>
-  write_csv("data/customers.csv")
+  write_csv("data/users.csv")
 
 

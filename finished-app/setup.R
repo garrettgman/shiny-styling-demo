@@ -1,13 +1,13 @@
 # setup.R
 
 # Read and prepare data
-customers <-
-  read_csv("data/customers.csv") |>
+users <-
+  read_csv("data/users.csv") |>
   mutate(evaluation = factor(evaluation, levels = c("None", "A", "B")),
          propensity = factor(propensity, levels = c("Good", "Average", "Poor")))
 
-customers_by_group <-
-  customers |>
+users_by_group <-
+  users |>
   group_by(industry, propensity, contract, evaluation) |>
   summarize(success_rate = round(mean(outcome == "Won")* 100),
             avg_amount = round(mean(amount)),
