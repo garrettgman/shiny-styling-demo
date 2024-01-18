@@ -47,5 +47,5 @@ sidebar_content <-
                 choices = contracts,
                 selected = "",
                 multiple  = TRUE),
-  "This app compares the effectiveness of two types of free trials, A (30-days) and B (100-days), at converting users into customers."
-)
+    "This app compares the effectiveness of two types of free trials at converting users into customers, A (30-days) and B (100-days)."
+  )

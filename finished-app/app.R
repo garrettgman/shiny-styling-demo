@@ -2,6 +2,7 @@
 library(shiny)
 library(tidyverse)
 library(bslib)
+library(bsicons)
 library(thematic)
 library(gitlink)
 
@@ -42,18 +43,21 @@ ui <- page_sidebar(
          plotOutput("line")),
     card(card_header("Conversion rates", class = "text-success"),
          plotOutput("bar")),
-    value_box("Recommended Trial",
+    value_box(title = "Recommended Trial",
               textOutput("recommended_eval"),
+              showcase = bs_icon("stars"),
+              theme = "success"),
+    value_box(title = "Customers",
+              textOutput("number_of_customers"),
+              showcase = bs_icon("people-fill"),
               theme = "secondary"),
-    value_box("Users",
-              textOutput("number_of_users"),
-              theme = "secondary"),
-    value_box("Avg Spend",
+    value_box(title = "Avg Spend",
               textOutput("average_spend"),
+              showcase = bs_icon("coin"),
               theme = "secondary"),
     card(card_header("Conversion rates by subgroup", class = "text-success"),
          tableOutput("table")),
-    col_widths = c(8,4,4,4,4,12),
+    col_widths = c(8, 4, 4, 4, 4, 12),
     row_heights = c(4, 1.5, 3)
   )
 )
