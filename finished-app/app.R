@@ -15,7 +15,6 @@ thematic_shiny()
 # Load data, objects, and helper functions
 source("setup.R")
 source("helpers.R")
-addResourcePath("fonts", "./fonts")
 
 # Build the app UI
 ui <- page_sidebar(
@@ -28,7 +27,7 @@ ui <- page_sidebar(
                    success = "#86C7ED",
                    "table-color" = "#86C7ED",
                    heading_font = font_face(family = "Open Sauce Sans",
-                                            src = "url('/fonts/OpenSauceSans-Regular.ttf') format('truetype')")),
+                                            src = "url('/OpenSauceSans-Regular.ttf') format('truetype')")),
 
   # Add title
   title = "Effectiveness of DemoCo App Free Trial by User Profile",
