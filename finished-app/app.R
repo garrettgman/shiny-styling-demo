@@ -15,6 +15,7 @@ thematic_shiny()
 # Load data, objects, and helper functions
 source("setup.R")
 source("helpers.R")
+addResourcePath("fonts", "./fonts")
 
 # Build the app UI
 ui <- page_sidebar(
@@ -24,8 +25,10 @@ ui <- page_sidebar(
 
   # Set the CSS theme
   theme = bs_theme(bootswatch = "darkly",
+                   success = "#86C7ED",
                    "table-color" = "#86C7ED",
-                   success = "#86C7ED"),
+                   heading_font = font_face(family = "Open Sauce Sans",
+                                            src = "url('/fonts/OpenSauceSans-Regular.ttf') format('truetype')")),
 
   # Add title
   title = "Effectiveness of DemoCo App Free Trial by User Profile",
@@ -39,9 +42,9 @@ ui <- page_sidebar(
 
   # Layout non-sidebar elements
   layout_columns(
-    card(card_header("Conversions over time", class = "text-success"),
+    card(card_header("Conversions over time", class = "h6 text-success"),
          plotOutput("line")),
-    card(card_header("Conversion rates", class = "text-success"),
+    card(card_header("Conversion rates", class = "h6 text-success"),
          plotOutput("bar")),
     value_box(title = "Recommended Trial",
               textOutput("recommended_eval"),
@@ -55,7 +58,7 @@ ui <- page_sidebar(
               textOutput("average_spend"),
               showcase = bs_icon("coin"),
               theme = "secondary"),
-    card(card_header("Conversion rates by subgroup", class = "text-success"),
+    card(card_header("Conversion rates by subgroup", class = "h6 text-success"),
          tableOutput("table")),
     col_widths = c(8, 4, 4, 4, 4, 12),
     row_heights = c(4, 1.5, 3)
