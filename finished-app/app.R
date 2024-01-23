@@ -26,6 +26,7 @@ ui <- page_sidebar(
   theme = bs_theme(bootswatch = "darkly",
                    success = "#86C7ED",
                    "table-color" = "#86C7ED",
+                   base_font = font_google("Lato"),
                    heading_font = font_face(family = "Open Sauce Sans",
                                             src = "url('/OpenSauceSans-Regular.ttf') format('truetype')")),
 
@@ -36,7 +37,7 @@ ui <- page_sidebar(
   sidebar = sidebar(
     class = "bg-secondary",
     sidebar_content,
-    tags$img(src = "logo.png", width = "100%", height = "auto")
+    HTML('<img src = "logo.png", width = "100%", height = "auto">')
   ),
 
   # Layout non-sidebar elements
