@@ -28,7 +28,7 @@ ui <- page_sidebar(
                    "table-color" = "#86C7ED",
                    base_font = font_google("Lato"),
                    heading_font = font_face(family = "Open Sauce Sans",
-                                            src = "url('/OpenSauceSans-Regular.ttf') format('truetype')")),
+                                            src = "url('../OpenSauceSans-Regular.ttf') format('truetype')")),
 
   # Add title
   title = "Effectiveness of DemoCo App Free Trial by User Profile",
