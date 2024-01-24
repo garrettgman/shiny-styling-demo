@@ -24,6 +24,7 @@ ui <- page_sidebar(
 
   # Set the CSS theme
   theme = bs_theme(bootswatch = "darkly",
+                   version = 5,
                    success = "#86C7ED",
                    "table-color" = "#86C7ED",
                    base_font = font_google("Lato"),
